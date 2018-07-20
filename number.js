@@ -5,7 +5,7 @@ function Button() {
       <button>Go</button>
       <h2>WalEED</h2>
       <form>
-        <input />
+        <input type="Number" />
       </form>
     </div>
   );
