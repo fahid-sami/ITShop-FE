@@ -16,7 +16,7 @@ class App1 extends Component {
           <form>
             <label>
               Name:
-              <input type="text" name="name" />
+              <input type="text" name="name" required="true" />
             </label>
             <input type="submit" value="Submit" />
           </form>
