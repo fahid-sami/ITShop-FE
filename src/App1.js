@@ -13,13 +13,11 @@ class App1 extends Component {
         <div className="App-intro">
           To get started, I have edited <code>src/App.js</code> and save to
           reload.
-          <form>
-            <label>
-              Name:
-              <input type="text" name="name" required="true" />
-            </label>
-            <input type="submit" value="Submit" />
-          </form>
+          <label>
+            Name:
+            <input type="text" name="name" required="true" />
+          </label>
+          <input type="submit" value="Submit" />
         </div>
       </div>
     );
