@@ -2,10 +2,10 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
-import App1 from "./App1";
+import Inputs from "./Inputs";
 import registerServiceWorker from "./registerServiceWorker";
 
 ReactDOM.render(<App />, document.getElementById("root"));
 registerServiceWorker();
-ReactDOM.render(<App1 />, document.getElementById("root"));
+ReactDOM.render(<Inputs />, document.getElementById("root"));
 registerServiceWorker();
