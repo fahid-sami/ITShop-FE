@@ -1,0 +1,38 @@
+<html>
+
+<head>
+
+</head>
+
+<body>
+    <script type="text/javascript">
+
+        var s = "22114445888888787878787878766";
+        var c;
+        var b = 0;
+        var d;
+
+        for (i = 0; i < s.length; i++) {
+            var c = 0;
+            var n = s[i]
+            for (j = 0; j < s.length; j++) {
+                if (s[j] == n) {
+                    c = c + 1;
+
+                }
+
+            }
+
+            if (c > b) {
+
+                b = c;
+                d = s[i];
+            }
+
+        }
+        document.write(s + "<br  />")
+        document.write(d + " is " + b + "times!!")
+    </script>
+</body>
+
+</html>
