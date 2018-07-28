@@ -1,0 +1,32 @@
+html>
+
+<head>
+
+</head>
+
+<body>
+    <script type="text/javascript">
+
+        var a = "zuhhyyggdhddbb";
+        var n = a[0];
+        var c = 1;
+
+        for (i = 1; i < a.length; i++) {
+            if (a[i] != a[i - 1]) {
+                n += c + a[i];
+
+                c = 1;
+
+            }
+            else {
+                c = c + 1;
+            }
+
+        }
+        document.write(n + c + "<br />");
+
+    </script>
+
+</body>
+
+</html>
