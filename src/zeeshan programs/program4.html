@@ -1,0 +1,43 @@
+<html>
+
+<head>
+
+</head>
+
+<body>
+    <script type="text/javascript">
+
+        var a = "zzesdafdhafhfbbb";
+        var n;
+        var c = 1;
+        n = a[0];
+
+        for (i = 0; i < a.length; i++) {
+            var c = 0;
+
+            for (z = 0; z < i; z++) {
+
+                if (a[i] == a[z]) {
+                    i = i + 1;
+                }
+                else {
+                    n = a[i];
+                }
+
+            }
+
+            for (j = 0; j < a.length; j++) {
+                if (a[j] == n) {
+                    c = c + 1;
+                }
+            }
+
+
+            document.write(n + " is " + c + "  time!! <br />");
+
+        }
+    </script>
+
+</body>
+
+</html>

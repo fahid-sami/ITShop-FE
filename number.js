@@ -1,11 +1,12 @@
 function Button() {
   return (
     <div>
-      <button>Go</button>
-      <button>Go</button>
-      <h2>WalEED</h2>
+      <h2>
+        WalEED making a input field that accepts number only
+        hHhHhHhhahahahahahaha
+      </h2>
       <form>
-        <input type="Number" />
+        <input type="Number" id="inp" />
       </form>
     </div>
   );
