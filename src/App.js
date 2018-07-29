@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import String from "./components/string";
-import props from "./components/props";
+import Func from "./components/props";
+import Prop from "./components/prop";
 
 class App extends Component {
   render() {
@@ -13,7 +14,8 @@ class App extends Component {
           <h1 className="App-title">Welcome to React</h1>
         </header>
         <String />
-        <props />
+        <Func length="5" maxlength="50" minlength="20" />
+        <Prop height="200px" bg="red" />
       </div>
     );
   }
