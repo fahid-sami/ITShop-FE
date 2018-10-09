@@ -1,17 +1,19 @@
 {
-  "name": "itshop",
-  "version": "0.1.0",
+  "name": "myapp",
+  "version": "0.0.0",
   "private": true,
-  "dependencies": {
-    "bootstrap": "^4.1.3",
-    "react": "^16.4.1",
-    "react-dom": "^16.4.1",
-    "react-scripts": "1.1.4"
-  },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "express": "~4.16.0",
+    "http-errors": "~1.6.2",
+    "morgan": "~1.9.0",
+    "pug": "2.0.0-beta11",
+    "request": "*",
+    "bluebird": "*",
+    "async": "*"
   }
 }
