@@ -34,4 +34,17 @@ module.exports = controller => {
                 sendErrorRes(res, "Error occured in finding Addresses", 400);
             });
     }
+
+    userController.getAdressesWithCallback = (req, res) => {
+        models.User.getAdressesWithCallback(req.query.address, results => {
+            let htmlResponseObj = "<html> <head></head> <body> <h1> Following are the titles of given websites: </h1> <ul>";
+                for(let obj in results) {
+                    htmlResponseObj = htmlResponseObj + "<li>" + results[obj] + "</li>";
+                }
+                htmlResponseObj = htmlResponseObj + "</ul> </body> </html>";
+                res.status(200).send(createSuccessResObject(htmlResponseObj, 'Addresses found successfully with Callback'));
+            }, () => {
+                sendErrorRes(res, "Error occured in finding Addresses", 400);
+            });
+    }
 }

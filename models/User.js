@@ -2,6 +2,19 @@
 const request = require('request');
 const async = require('async');
 
+const parseData = (rawHtml, response, item) => {
+    let title = "";
+    if(response && response.statusCode == 200) {
+        const startIndex = rawHtml.indexOf("<title>") + 7;
+        const lastIndex = rawHtml.indexOf("</title>");
+        title = rawHtml.substring(startIndex, lastIndex);
+        title = item + " - " + title;
+    } else {
+        title = item + " - " + "NO RESPONSE";
+    }
+    return title;
+}
+
 module.exports = connection => {
 
     return {
@@ -11,21 +24,9 @@ module.exports = connection => {
             return new Promise((resolve, reject) => {
                 async.eachSeries(addresses, function iteratee(item, cb) {
                     let url = "http://" + item;
-                    request(url, function (error, response, body) {
-                        if(response && response.statusCode == 200) {
-                            let startIndex = body.indexOf("<title>");
-                            startIndex = startIndex + 7;
-                            let lastIndex = body.indexOf("</title>");
-                            let title = body.substring(startIndex, lastIndex);
-                            title = item + " - " + title;
-                            foundAddresses.push(title);
-                            cb(null);
-                        }
-                        else {
-                            let title = item + " - " + "NO RESPONSE";
-                            foundAddresses.push(title);
-                            cb(null);
-                        }
+                    request(url, (error, response, body) => {
+                        foundAddresses.push(parseData(body, response, item));
+                        cb(null);
                     });
                 }, function done() {
                     resolve(foundAddresses);
@@ -40,19 +41,8 @@ module.exports = connection => {
                 for (let item = 0; item < addresses.length; item++) {
                     a.push(new Promise((resolve, reject) => {
                         let url = "http://" + addresses[item];
-                        request(url, function (error, response, body) {
-                            if(response && response.statusCode == 200) {
-                                let startIndex = body.indexOf("<title>");
-                                startIndex = startIndex + 7;
-                                let lastIndex = body.indexOf("</title>");
-                                let title = body.substring(startIndex, lastIndex);
-                                title = addresses[item] + " - " + title;
-                                resolve(title);
-                            }
-                            else {
-                                let title = addresses[item] + " - " + "NO RESPONSE";
-                                resolve(title);
-                            }
+                        request(url, (error, response, body) => {
+                            resolve(parseData(body, response, addresses[item]));
                         });
                     }));
                 }
@@ -65,5 +55,18 @@ module.exports = connection => {
             });
         },
 
+        getAdressesWithCallback: (addresses, callBack, errorCallBack) => {
+            let foundAddresses = [];
+            for (let i = 0; i < addresses.length; i++) {
+                let url = "http://" + addresses[i];
+                request(url, (error, response, body) => {
+                    foundAddresses.push(parseData(body, response, addresses[i]));
+                    if(foundAddresses.length === addresses.length) {
+                        callBack(foundAddresses);
+                    }
+                });
+            }
+        },
+        
     }    
 }
